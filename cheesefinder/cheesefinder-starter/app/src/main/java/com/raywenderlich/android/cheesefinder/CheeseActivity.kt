@@ -33,8 +33,13 @@ package com.raywenderlich.android.cheesefinder
 import android.annotation.SuppressLint
 import android.os.Bundle
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_cheeses.*
+import io.reactivex.ObservableEmitter
+
+
 
 class CheeseActivity : BaseSearchActivity() {
 
@@ -50,10 +55,38 @@ class CheeseActivity : BaseSearchActivity() {
                         showResult(cheeseSearchEngine.search(query))
                     }
                 })
+
+
+        val source = Observable.create { emitter: ObservableEmitter<Int> ->
+            emitter.onNext(100)
+            emitter.onNext(200)
+            emitter.onNext(300)
+        }
+
+        Observable.create<String> {
+            it.onNext("hi")
+            it.onNext("rx")
+        }.subscribe()
+                .
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+
+
+
+        Observable.create()
+                .subscribe()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+
+
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         createButtonClickObservable()
+    }
+
+    fun makeObservable(){
+
     }
 
 
