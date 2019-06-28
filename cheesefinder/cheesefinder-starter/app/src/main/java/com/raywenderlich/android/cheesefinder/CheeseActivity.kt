@@ -30,6 +30,46 @@
 
 package com.raywenderlich.android.cheesefinder
 
+import android.annotation.SuppressLint
+import android.os.Bundle
+import io.reactivex.Observable
+import io.reactivex.functions.Consumer
+import kotlinx.android.synthetic.main.activity_cheeses.*
+
 class CheeseActivity : BaseSearchActivity() {
+
+    private val cheeseAdapter = CheeseAdapter()
+
+    @SuppressLint("CheckResult")
+    override fun onStart() {
+        super.onStart()
+        val searchTextObservable = createButtonClickObservable()
+        searchTextObservable
+                .subscribe(object :Consumer<String>{
+                    override fun accept(query: String) {
+                        showResult(cheeseSearchEngine.search(query))
+                    }
+                })
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        createButtonClickObservable()
+    }
+
+
+
+    private fun createButtonClickObservable() : Observable<String> {
+       return Observable.create<String>{emmiter->
+           searchButton.setOnClickListener {
+               emmiter.onNext(queryEditText.text.toString())
+           }
+           //Observable이 제거될때 버튼의 clickListner를 제거해주는게 메모리 릭 방지
+           emmiter.setCancellable{
+               searchButton.setOnClickListener(null)
+           }
+       }
+    }
+
+
 
 }

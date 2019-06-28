@@ -86,6 +86,15 @@ abstract class BaseSearchActivity : AppCompatActivity() {
     cheeseAdapter.cheeses = result
   }
 
+  /*protected fun showResult(result : List<Cheese>){
+    result.isEmpty().run {
+      Toast.makeText(this,"No cheeses found",Toast.LENGTH_SHORT).show()
+    }.run {
+      cheeseAdapter.cheeses=result
+    }
+
+  }*/
+
   private fun loadInitialData(context: Context): Flowable<List<Long>> {
     return Maybe.fromAction<List<Long>> {
 
