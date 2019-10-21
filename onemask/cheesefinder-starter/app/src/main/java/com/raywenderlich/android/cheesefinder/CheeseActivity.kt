@@ -32,4 +32,6 @@ package com.raywenderlich.android.cheesefinder
 
 class CheeseActivity : BaseSearchActivity() {
 
+
+
 }

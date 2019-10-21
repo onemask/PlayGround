@@ -1,4 +1,5 @@
 package com.raywenderlich.android.cheesefinder
+
 /*
  * Copyright (c) 2019 Razeware LLC
  *
@@ -43,37 +44,40 @@ import androidx.appcompat.app.AppCompatActivity
  */
 class SplashActivity : AppCompatActivity() {
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    makeFullScreen()
+        makeFullScreen()
 
-    setContentView(R.layout.activity_splash)
+        setContentView(R.layout.activity_splash)
 
-    // Using a handler to delay loading the MainActivity
-    Handler().postDelayed({
+        // Using a handler to delay loading the MainActivity
+        Handler().postDelayed({
 
-      // Start activity
-      startActivity(Intent(this, CheeseActivity::class.java))
+            // Start activity
+            //startActivity(Intent(this, CheeseActivity::class.java))
 
-      // Animate the loading of new activity
-      overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            // Start TestBtnactivity
+            startActivity(Intent(this, BackPressAcitivity::class.java))
 
-      // Close this activity
-      finish()
+            // Animate the loading of new activity
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
 
-    }, 2000)
-  }
+            // Close this activity
+            finish()
 
-  private fun makeFullScreen() {
-    // Remove Title
-    requestWindowFeature(Window.FEATURE_NO_TITLE)
+        }, 2000)
+    }
 
-    // Make Fullscreen
-    window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-        WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    private fun makeFullScreen() {
+        // Remove Title
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
 
-    // Hide the toolbar
-    supportActionBar?.hide()
-  }
+        // Make Fullscreen
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN)
+
+        // Hide the toolbar
+        supportActionBar?.hide()
+    }
 }
