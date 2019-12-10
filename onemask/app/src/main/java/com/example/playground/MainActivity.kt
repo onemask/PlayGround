@@ -1,5 +1,6 @@
 package com.example.playground
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.widget.TextView
 import com.example.playground.action.CounterActions
 import com.example.playground.di.DI
 import com.example.playground.state.CounterState
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +35,9 @@ class MainActivity : AppCompatActivity() {
             DI.store.dispatch(action = CounterActions.Increment)
         }
 
+        btn_google_login.setOnClickListener {
+            startActivity(Intent(this,GoogleSignUpActivity::class.java))
+        }
 
         /*
          * foldRight & fold
