@@ -1,3 +1,4 @@
+/*
 package com.example.playground
 
 import android.content.Intent
@@ -5,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.Auth
-import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -27,12 +27,14 @@ class GoogleSignUpActivity : AppCompatActivity() {
 
         //옵션을 관리하는 클래스로 API 키값이 요청할 값이 정해져있다.
 
-        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+       */
+/* gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
-            .build()
+            .build()*//*
 
-        googlesignInClient = GoogleSignIn.getClient(this, gso)
+
+        //googlesignInClient = GoogleSignIn.getClient(this, gso)
         signIn()
     }
 
@@ -57,3 +59,4 @@ class GoogleSignUpActivity : AppCompatActivity() {
         }
     }
 }
+*/

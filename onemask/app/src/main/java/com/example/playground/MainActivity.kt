@@ -10,6 +10,7 @@ import com.example.playground.action.CounterActions
 import com.example.playground.di.DI
 import com.example.playground.state.CounterState
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setupTimber()
 
         DI.store.add {
             counterText.text = "${it.value}"
@@ -35,9 +37,9 @@ class MainActivity : AppCompatActivity() {
             DI.store.dispatch(action = CounterActions.Increment)
         }
 
-        btn_google_login.setOnClickListener {
-            startActivity(Intent(this,GoogleSignUpActivity::class.java))
-        }
+        /*btn_google_login.setOnClickListener {
+           // startActivity(Intent(this, GoogleSignUpActivity::class.java))
+        }*/
 
         /*
          * foldRight & fold
@@ -88,7 +90,9 @@ class MainActivity : AppCompatActivity() {
                 fruitName + " " + next.name
             })
         println("fruitLeftList $fruitLeftList")
+    }
 
-
+    private fun setupTimber() {
+        Timber.plant(Timber.DebugTree())
     }
 }
