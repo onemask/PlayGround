@@ -19,6 +19,8 @@ class DiffUtilActivity : AppCompatActivity() {
     }
 
     private fun setupAdatper() {
+        madapter.setItems(10)
+
         main_recycler_view.run {
             adapter = madapter
             layoutManager = GridLayoutManager(applicationContext, 5)
