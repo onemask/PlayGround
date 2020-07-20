@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.playground.R
 import com.example.playground.diffutill.adapter.DiffUtilAdapter
 import kotlinx.android.synthetic.main.activity_diff_utill.*
+import java.net.HttpURLConnection
+import java.net.URL
 
 class DiffUtilActivity : AppCompatActivity() {
 
@@ -14,8 +16,29 @@ class DiffUtilActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_diff_utill)
-        setupAdatper()
-        setupButton()
+        //setupAdatper()
+        //setupButton()
+        connect()
+    }
+
+    private fun connect() {
+        try {
+            val url = URL("https://google.co.kr")
+            val conn = url.openConnection() as HttpURLConnection
+            conn.requestMethod = "GET"
+            conn.doOutput = true
+            conn.doInput = true
+            conn.useCaches = false
+            conn.defaultUseCaches = false
+
+            val result = conn.inputStream.bufferedReader().use {
+                it.readText()
+            }
+            print("result $result")
+        }catch (exception: Exception) {
+            println("e $exception")
+        }
+
     }
 
     private fun setupAdatper() {

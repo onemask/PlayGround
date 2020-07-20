@@ -115,7 +115,7 @@ class TileDiffUtilCallback(
     private val oldTiles: List<Tile>,
     private val newTiles: List<Tile>
 ) : DiffUtil.Callback() {
-    //두 객체가 같은 항목인지 여부를 결정
+
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         return oldTiles[oldItemPosition] == newTiles[newItemPosition]
     }

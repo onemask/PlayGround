@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.playground.action.CounterActions
 import com.example.playground.di.DI
 import kotlinx.android.synthetic.main.activity_main.*
+import java.net.HttpURLConnection
+import java.net.URL
 
 class MainActivity : AppCompatActivity() {
 
